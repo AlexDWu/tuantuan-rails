@@ -1,0 +1,11 @@
+<h1><%= @run.name %></h1>
+
+<p> close time: <%= @run.close_time %>
+
+<ul>
+  <li><%= link_to "Edit", edit_run_path(@run) %></li>
+  <li><%= link_to "Delete", run_path(@run), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %></li>
+</ul>

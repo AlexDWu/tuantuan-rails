@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_20_234801) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_230936) do
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "max_quantity"
+    t.integer "run_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["run_id"], name: "index_items_on_run_id"
+  end
+
   create_table "runs", force: :cascade do |t|
     t.string "name"
     t.datetime "close_time"
@@ -47,5 +56,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_234801) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "items", "runs"
   add_foreign_key "runs", "users"
 end
