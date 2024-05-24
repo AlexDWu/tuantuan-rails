@@ -7,6 +7,21 @@
   <strong>max quantity:</strong>
   <%= item.max_quantity %>
 </p>
+
+<ul>
+  <% item.images.each do |file| %>
+    <li>
+      <% if file.representable? %>
+        <%= image_tag file.variant(:standard) %>
+      <% else %>
+        <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+          <%= image_tag "placeholder.png", alt: "Download file" %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
 <p>
   <%= link_to "Delete Item", [item.run, item], data: {
                 turbo_method: :delete,

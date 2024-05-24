@@ -10,6 +10,7 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find(params[:id])
+    raise ActionController::RoutingError, 'Not Found' if @run.user != current_user
   end
 
   def new
@@ -29,10 +30,12 @@ class RunsController < ApplicationController
 
   def edit
     @run = Run.find(params[:id])
+    raise ActionController::RoutingError, 'Not Found' if @run.user != current_user
   end
 
   def update
     @run = Run.find(params[:id])
+    raise ActionController::RoutingError, 'Not Found' if @run.user != current_user
 
     if @run.update(run_params)
       redirect_to @run
@@ -43,12 +46,10 @@ class RunsController < ApplicationController
 
   def destroy
     @run = Run.find(params[:id])
-    if @run.user == current_user
-      @run.destroy
-      redirect_to runs_path, status: :see_other
-    else
-      render :show, status: :unprocessable_entity
-    end
+    raise ActionController::RoutingError, 'Not Found' if @run.user != current_user
+
+    @run.destroy
+    redirect_to runs_path, status: :see_other
   end
 
   private

@@ -8,6 +8,10 @@
     <%= form.number_field :max_quantity %>
   </p>
   <p>
+    <%= form.label :images %><br>
+    <%= form.file_field(:images, accept: 'image/png,image/gif,image/jpeg', multiple: true)%>
+  </p>
+  <p>
     <%= form.submit %>
   </p>
 <% end %>
