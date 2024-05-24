@@ -1,0 +1,13 @@
+<%= form_with model: [ @run, @run.items.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :max_quantity %><br>
+    <%= form.number_field :max_quantity %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,15 @@
+<p>
+  <strong>name:</strong>
+  <%= item.name %>
+</p>
+
+<p>
+  <strong>max quantity:</strong>
+  <%= item.max_quantity %>
+</p>
+<p>
+  <%= link_to "Delete Item", [item.run, item], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+</p>
