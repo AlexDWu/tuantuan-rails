@@ -5,6 +5,11 @@ class OrdersController < ApplicationController
 
   def index
     @user = current_user
-    @runs = Order.where(user: @user)
+    @orders = Order.where(user: @user)
+  end
+
+  def create
+    @run = Run.find(params[:run_id])
+    puts("run id: #{params}")
   end
 end

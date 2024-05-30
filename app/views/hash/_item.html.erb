@@ -1,0 +1,30 @@
+<div class="m-1 p-1 border border-current rounded flex flex-row items-center gap-1">
+  <div>
+    <p>
+      <strong>name:</strong>
+      <%= item.name %>
+    </p>
+
+    <p>
+      <strong>max quantity:</strong>
+      <%= item.max_quantity %>
+    </p>
+  </div>
+  <ul>
+    <% item.images.each do |file| %>
+      <li>
+        <% if file.representable? %>
+          <%= image_tag file.variant(:thumb) %>
+        <% else %>
+          <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+            <%= image_tag "placeholder.png", alt: "Download file" %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <div>
+    <%= form.label "#{item.id}_quantity" %><br>
+    <%= form.number_field "#{item.id}_quantity" %>
+  </div>
+</div>

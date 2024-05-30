@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :runs do
     resources :items
+    resources :orders
   end
 
   resources :orders

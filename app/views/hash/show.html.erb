@@ -1,1 +1,13 @@
-Hello World
+<h1 class="text-3xl font-bold underline"><%= @run.name %></h1>
+
+<p> close time: <%= @run.close_time %>
+
+<h2>Items</h2>
+<%= form_with model: [ @run, @run.orders.build ] do |form| %>
+  <% @run.items.each do |item| %>
+    <%= render "item", item: item, form: form%>
+  <% end %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
