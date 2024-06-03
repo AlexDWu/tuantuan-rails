@@ -3,10 +3,12 @@
 <p> close time: <%= @run.close_time %>
 
 <h2>Items</h2>
-<%= form_with model: [ @run, @run.orders.build ] do |form| %>
-  <% @run.items.each do |item| %>
-    <%= render "item", item: item, form: form%>
+<pre><%= @order.item_orders.as_json %></pre>
+<%= form_with model: [ @order.run, @order ] do |form| %>
+  <%= form.fields_for :item_orders do |item_order_form| %>
+    <%= render "item", item_order_form: item_order_form %>
   <% end %>
+
   <p>
     <%= form.submit %>
   </p>

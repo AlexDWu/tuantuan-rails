@@ -2,16 +2,11 @@
   <div>
     <p>
       <strong>name:</strong>
-      <%= item.name %>
-    </p>
-
-    <p>
-      <strong>max quantity:</strong>
-      <%= item.max_quantity %>
+      <%= item_order_form.object.item.name %>
     </p>
   </div>
   <ul>
-    <% item.images.each do |file| %>
+    <% item_order_form.object.item.images.each do |file| %>
       <li>
         <% if file.representable? %>
           <%= image_tag file.variant(:thumb) %>
@@ -24,7 +19,7 @@
     <% end %>
   </ul>
   <div>
-    <%= form.label "#{item.id}_quantity" %><br>
-    <%= form.number_field "#{item.id}_quantity" %>
+    <%= item_order_form.label :quantity %><br>
+    <%= item_order_form.number_field :quantity %>
   </div>
 </div>

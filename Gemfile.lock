@@ -265,6 +265,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqids (0.2.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
     sqlite3 (1.7.3-arm64-darwin)
@@ -335,6 +336,7 @@ DEPENDENCIES
   rubocop-rails
   selenium-webdriver
   sprockets-rails
+  sqids (~> 0.2.0)
   sqlite3 (~> 1.4)
   stimulus-rails
   tailwindcss-rails (~> 2.6)
