@@ -1,15 +1,22 @@
-<div class="m-1 p-1 border border-current rounded flex flex-row items-center gap-1">
-  <div>
-    <p>
-      <strong>name:</strong>
-      <%= item_order_form.object.item.name %>
-    </p>
+<div class="m-1 p-2 border border-current rounded flex flex-col items-stretch gap-2">
+  <div class="flex flex-row items-center justify-between gap-2">
+    <div>
+      <p>
+        <%= item_order_form.object.item.name %>
+      </p>
+    </div>
+    <div>
+      <%= item_order_form.label :quantity %><br>
+      <%= item_order_form.number_field :quantity, class: "w-24" %>
+
+      <%= item_order_form.hidden_field :item_id %>
+    </div>
   </div>
   <ul>
     <% item_order_form.object.item.images.each do |file| %>
       <li>
         <% if file.representable? %>
-          <%= image_tag file.variant(:thumb) %>
+          <%= image_tag file.variant(:standard) %>
         <% else %>
           <%= link_to rails_blob_path(file, disposition: "attachment") do %>
             <%= image_tag "placeholder.png", alt: "Download file" %>
@@ -18,8 +25,4 @@
       </li>
     <% end %>
   </ul>
-  <div>
-    <%= item_order_form.label :quantity %><br>
-    <%= item_order_form.number_field :quantity %>
-  </div>
 </div>

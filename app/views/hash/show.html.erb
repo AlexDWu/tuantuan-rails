@@ -3,13 +3,13 @@
 <p> close time: <%= @run.close_time %>
 
 <h2>Items</h2>
-<pre><%= @order.item_orders.as_json %></pre>
 <%= form_with model: [ @order.run, @order ] do |form| %>
+  <%= form.hidden_field :run_id %>
   <%= form.fields_for :item_orders do |item_order_form| %>
     <%= render "item", item_order_form: item_order_form %>
   <% end %>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: 'btn-primary' %>
   </p>
 <% end %>
