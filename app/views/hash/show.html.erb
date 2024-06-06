@@ -1,15 +1,6 @@
 <h1 class="text-3xl font-bold underline"><%= @run.name %></h1>
 
-<p> close time: <%= @run.close_time %>
+<p>You have until <%=@order.run.close_time%> to put in your order</p>
 
-<h2>Items</h2>
-<%= form_with model: [ @order.run, @order ] do |form| %>
-  <%= form.hidden_field :run_id %>
-  <%= form.fields_for :item_orders do |item_order_form| %>
-    <%= render "item", item_order_form: item_order_form %>
-  <% end %>
-
-  <p>
-    <%= form.submit class: 'btn-primary' %>
-  </p>
-<% end %>
+<h2 class="text-xl" >Items</h2>
+<%= render 'orders/form' %>

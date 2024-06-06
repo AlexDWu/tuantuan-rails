@@ -1,4 +1,4 @@
-<%= form_with model: [ @run, @run.items.build ] do |form| %>
+<%= form_with model: [ @run, @run.items.build ], class: "card p-2" do |form| %>
   <p>
     <%= form.label :name %><br>
     <%= form.text_field :name %>

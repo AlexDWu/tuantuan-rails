@@ -1,0 +1,22 @@
+<div>Orders for Run: <%= @run.name %></div>
+
+<table class="border-collapse border text-center">
+  <thead>
+    <th class="sticky print:static top-0 z-10 px-1 border bg-slate-300"> Customer Name </th>
+    <% @items.each do |item| %>
+      <th class="sticky print:static top-0 z-10 px-1 border bg-slate-300"><%= item.name %></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td class="sticky print:static left-0 px-1 border bg-white">
+          <%= order.user.email %>
+        </td>
+        <% @items.each do |item| %>
+          <td class="border px-1"><%= order.item_orders.find_by(item: item).quantity %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

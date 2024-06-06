@@ -1,0 +1,26 @@
+<h1>Orders</h1>
+<ul>
+  <% @orders.each do |order| %>
+    <li class="card p-2 flex flex-col">
+      <div class="flex flex-row items-center justify-between gap-2">
+        <div>
+          <%= order.run.name %>
+        </div>
+        <div>
+          <%= link_to "Edit", edit_order_path(order) %>
+        </div>
+      </div>
+      <ul class="flex flex-row items-center gap-2 overflow-x-auto">
+        <% order.items.each do |item| %>
+          <li class="flex-none">
+            <% if item.images.first&.representable? %>
+              <%= image_tag item.images.first.variant(:standard) %>
+            <% else %>
+              <div><%= item.name %></div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

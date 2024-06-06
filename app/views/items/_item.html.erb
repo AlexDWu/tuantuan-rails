@@ -1,30 +1,32 @@
-<p>
-  <strong>name:</strong>
-  <%= item.name %>
-</p>
+<div class="card p-2">
+  <p>
+    <strong>name:</strong>
+    <%= item.name %>
+  </p>
 
-<p>
-  <strong>max quantity:</strong>
-  <%= item.max_quantity %>
-</p>
+  <p>
+    <strong>max quantity:</strong>
+    <%= item.max_quantity %>
+  </p>
 
-<ul>
-  <% item.images.each do |file| %>
-    <li>
-      <% if file.representable? %>
-        <%= image_tag file.variant(:standard) %>
-      <% else %>
-        <%= link_to rails_blob_path(file, disposition: "attachment") do %>
-          <%= image_tag "placeholder.png", alt: "Download file" %>
+  <ul>
+    <% item.images.each do |file| %>
+      <li>
+        <% if file.representable? %>
+          <%= image_tag file.variant(:standard) %>
+        <% else %>
+          <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+            <%= image_tag "placeholder.png", alt: "Download file" %>
+          <% end %>
         <% end %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+      </li>
+    <% end %>
+  </ul>
 
-<p>
-  <%= link_to "Delete Item", [item.run, item], data: {
-                turbo_method: :delete,
-                turbo_confirm: "Are you sure?"
-              } %>
-</p>
+  <p>
+    <%= link_to "Delete Item", [item.run, item], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
+</div>

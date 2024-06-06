@@ -1,4 +1,4 @@
-<h1 class="text-3xl font-bold underline"><%= @run.name %></h1>
+<h1 class="text-3xl font-bold"><%= @run.name %></h1>
 
 <p> close time: <%= @run.close_time %>
 
@@ -9,10 +9,13 @@
     turbo_confirm: "Are you sure?"
   } %></li>
   <li><a href="/<%= @run.sqid %>">Order Form</a></li>
+  <li><%= link_to "Orders", run_orders_path(@run) %></li>
 </ul>
 
-<h2>Items</h2>
-<%= render @run.items%>
+<h2 class="text-xl font-bold mt-4">Items</h2>
+<div class="flex flex-col gap-2">
+  <%= render @run.items%>
+</div>
 
-<h2>Add an item:</h2>
+<h2 class="text-xl font-bold mt-4">Add an item:</h2>
 <%= render 'items/form' %>
